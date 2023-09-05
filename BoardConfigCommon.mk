@@ -101,18 +101,18 @@ TARGET_INIT_VENDOR_LIB := //$(COMMON_PATH):libinit_oplus
 # Kernel
 # is-board-platform-in-list is used in split files below
 # from https://git.codelinaro.org/clo/la/platform/vendor/qcom-opensource/core-utils/-/blob/LA.QSSI.12.0.r1-08700.03-qssi.0/build/utils.mk
-include $(COMMON_PATH)/build/utils.mk
+#include $(COMMON_PATH)/build/utils.mk
 
-include $(COMMON_PATH)/kernel/kernel-platform-board.mk
-include vendor/qcom/opensource/audio-kernel/audio_kernel_vendor_board.mk
-include vendor/qcom/opensource/camera-kernel/board.mk
-include vendor/qcom/opensource/dataipa/dataipa_dlkm_vendor_board.mk
-include vendor/qcom/opensource/datarmnet-ext/datarmnet_ext_dlkm_vendor_board.mk
-include vendor/qcom/opensource/datarmnet/datarmnet_dlkm_vendor_board.mk
-include vendor/qcom/opensource/display-drivers/display_driver_board.mk
-include vendor/qcom/opensource/eva-kernel/eva_kernel_board.mk
-include vendor/qcom/opensource/mmrm-driver/mmrm_kernel_board.mk
-include vendor/qcom/opensource/video-driver/video_kernel_board.mk
+#include $(COMMON_PATH)/kernel/kernel-platform-board.mk
+#include vendor/qcom/opensource/audio-kernel/audio_kernel_vendor_board.mk
+#include vendor/qcom/opensource/camera-kernel/board.mk
+#include vendor/qcom/opensource/dataipa/dataipa_dlkm_vendor_board.mk
+#include vendor/qcom/opensource/datarmnet-ext/datarmnet_ext_dlkm_vendor_board.mk
+#include vendor/qcom/opensource/datarmnet/datarmnet_dlkm_vendor_board.mk
+#include vendor/qcom/opensource/display-drivers/display_driver_board.mk
+#include vendor/qcom/opensource/eva-kernel/eva_kernel_board.mk
+#include vendor/qcom/opensource/mmrm-driver/mmrm_kernel_board.mk
+#include vendor/qcom/opensource/video-driver/video_kernel_board.mk
 
 BOARD_BOOT_HEADER_VERSION := 4
 BOARD_KERNEL_BASE := 0x00000000
@@ -125,11 +125,15 @@ BOARD_BOOTCONFIG := \
 BOARD_KERNEL_CMDLINE := \
     video=vfb:640x400,bpp=32,memsize=3072000 \
     msm_geni_serial.con_enabled=0
-
+TARGET_KERNEL_CONFIG := gki_defconfig vendor/waipio_GKI.config 
+TARGET_KERNEL_SOURCE := device/oneplus/sm8450
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 BOARD_RAMDISK_USE_LZ4 := true
 BOARD_USES_GENERIC_KERNEL_IMAGE := true
+BOARD_KERNEL_IMAGE_NAME := Image
+BOARD_PREBUILT_DTBOIMAGE := $(COMMON_PATH)/prebuilt/dtbo.img
+
 
 # Platform
 BOARD_USES_QCOM_HARDWARE := true
@@ -254,7 +258,19 @@ WIFI_HIDL_UNIFIED_SUPPLICANT_SERVICE_RC_ENTRY := true
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 WIFI_DRIVER_INSTALL_TO_KERNEL_OUT := true
-BOARD_VENDOR_KERNEL_MODULES += $(KERNEL_MODULES_OUT)/qca_cld3_qca6490.ko
+#BOARD_VENDOR_KERNEL_MODULES += $(KERNEL_MODULES_OUT)/qca_cld3_qca6490.ko
+
+RISING_CHIPSET := "snapdragon 8+ Gen1"
+RISING_MAINTAINER := "Lechenos"
+TARGET_SUPPORTS_NEXT_GEN_ASSISTANT := true
+TARGET_SUPPORTS_GOOGLE_RECORDER := true
+TARGET_USE_PIXEL_FINGERPRINT := true
+TARGET_BUILD_APERTURE_CAMERA := true
+RISING_PACKAGE_TYPE := "VANILLA AOSP"
+TARGET_CORE_GMS_EXTRAS := true/
+TARGET_ENABLE_BLUR := true
+TARGET_CORE_GMS := true
+WITH_GMS := true
 
 # Include the proprietary files BoardConfig.
 include vendor/oneplus/sm8450-common/BoardConfigVendor.mk

@@ -29,6 +29,12 @@ PRODUCT_PACKAGES += \
     AntHalService-Soong \
     com.dsi.ant@1.0.vendor
 
+# Alert slider
+PRODUCT_PACKAGES += \
+    KeyHandler \
+    DeviceSettings \
+    tri-state-key-calibrate
+
 # APEX
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
@@ -63,7 +69,7 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.pal@1.0-impl \
     libhfp_pal
 
-AUDIO_HAL_DIR := hardware/qcom-caf/sm8450/audio
+AUDIO_HAL_DIR := hardware/qcom-caf/sm8450/audio/primary-hal
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/sku_cape/audio_policy_configuration.xml
@@ -245,17 +251,17 @@ PRODUCT_COPY_FILES += \
 # Kernel
 TARGET_BOARD_PLATFORM := taro
 
-$(call inherit-product, $(LOCAL_PATH)/kernel/kernel-platform-product.mk)
-$(call inherit-product, vendor/qcom/opensource/audio-kernel/audio_kernel_product_board.mk)
-$(call inherit-product, vendor/qcom/opensource/camera-kernel/config/waipio.mk)
-$(call inherit-product, vendor/qcom/opensource/camera-kernel/product.mk)
-$(call inherit-product, vendor/qcom/opensource/dataipa/dataipa_dlkm_vendor_product.mk)
-$(call inherit-product, vendor/qcom/opensource/datarmnet-ext/datarmnet_ext_dlkm_vendor_product.mk)
-$(call inherit-product, vendor/qcom/opensource/datarmnet/datarmnet_dlkm_vendor_product.mk)
-$(call inherit-product, vendor/qcom/opensource/display-drivers/display_driver_product.mk)
-$(call inherit-product, vendor/qcom/opensource/eva-kernel/eva_kernel_product.mk)
-$(call inherit-product, vendor/qcom/opensource/mmrm-driver/mmrm_kernel_board.mk)
-$(call inherit-product, vendor/qcom/opensource/video-driver/video_kernel_board.mk)
+#$(call inherit-product, $(LOCAL_PATH)/kernel/kernel-platform-product.mk)
+#$(call inherit-product, vendor/qcom/opensource/audio-kernel/audio_kernel_product_board.mk)
+#$(call inherit-product, vendor/qcom/opensource/camera-kernel/config/waipio.mk)
+#$(call inherit-product, vendor/qcom/opensource/camera-kernel/product.mk)
+#$(call inherit-product, vendor/qcom/opensource/dataipa/dataipa_dlkm_vendor_product.mk)
+#$(call inherit-product, vendor/qcom/opensource/datarmnet-ext/datarmnet_ext_dlkm_vendor_product.mk)
+#$(call inherit-product, vendor/qcom/opensource/datarmnet/datarmnet_dlkm_vendor_product.mk)
+#$(call inherit-product, vendor/qcom/opensource/display-drivers/display_driver_product.mk)
+#$(call inherit-product, vendor/qcom/opensource/eva-kernel/eva_kernel_product.mk)
+#$(call inherit-product, vendor/qcom/opensource/mmrm-driver/mmrm_kernel_board.mk)
+#$(call inherit-product, vendor/qcom/opensource/video-driver/video_kernel_board.mk)
 
 # Keymaster
 PRODUCT_PACKAGES += \
@@ -338,6 +344,7 @@ PRODUCT_PACKAGES += \
 $(call inherit-product, hardware/oplus/overlay/qssi/qssi.mk)
 
 DEVICE_PACKAGE_OVERLAYS += \
+    $(LOCAL_PATH)/overlay \
     $(LOCAL_PATH)/overlay-lineage
 
 PRODUCT_ENFORCE_RRO_TARGETS := *
@@ -508,9 +515,9 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.wifi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.xml \
     frameworks/native/data/etc/android.software.ipsec_tunnels.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.ipsec_tunnels.xml
 
-TARGET_WLAN_CHIP := qca6490
+#TARGET_WLAN_CHIP := qca6490
 
-WLAN_CHIPSET := qca_cld3
+#WLAN_CHIPSET := qca_cld3
 
 # Force chip-specific DLKM name
 TARGET_MULTI_WLAN := true
@@ -519,7 +526,7 @@ TARGET_MULTI_WLAN := true
 WPA := wpa_cli
 
 # Package chip specific ko files if TARGET_WLAN_CHIP is defined.
-PRODUCT_PACKAGES += qca_cld3_qca6490.ko
+#PRODUCT_PACKAGES += qca_cld3_qca6490.ko
 
 # WiFi Display
 PRODUCT_PACKAGES += \
