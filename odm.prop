@@ -32,3 +32,6 @@ ro.vendor.oplus.radio.sar_regionmark=FCC
 
 # SVN
 ro.build.version.svn=18
+ro.oplus.system.camera.name=com.oplus.camera
+oplus.software.camera.10bit=1
+ro.camera.notify_nfc=1

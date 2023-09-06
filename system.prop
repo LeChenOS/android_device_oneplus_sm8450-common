@@ -1,0 +1,6 @@
+#Expose aux camera for below packages
+vendor.camera.aux.packagelist=android,com.oneplus.camera,com.oppo.camera,com.oplus.engineercamera,com.oplus.camera
+#Whitelist below package in privapp
+persist.vendor.camera.privapp.list=com.oneplus.camera,com.oppo.camera,com.oplus.engineercamera,com.oplus.camera
+persist.camera.privapp.list=com.oneplus.camera,com.oppo.camera,com.oplus.engineercamera,com.oplus.camera
+

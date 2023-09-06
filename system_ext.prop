@@ -41,3 +41,12 @@ persist.vendor.sensors.enable.mag_filter=true
 
 # Vendor
 ro.vendor.qti.va_aosp.support=1
+# oplus add props start
+ro.oplus.system.camera.name=com.oplus.camera
+ro.oplus.system.camera.flashlight=com.oplus.motor.flashlight
+ro.oplus.camera.video_beauty.prefix=oplus.video.beauty.
+ro.oplus.camera.video.beauty.switch=oplus.switch.video.beauty
+ro.oplus.camera.speechassist=true
+ro.oplus.camera.portrait.center.switch=oplus.switch.portrait.center
+ro.oplus.camera.portrait_center.prefix=oplus.portrait.center.
+ro.camera.privileged.3rdpartyApp=com.aiunit.aon;

@@ -171,3 +171,4 @@ vendor.usb.use_gadget_hal=0
 
 # Zygote
 zygote.critical_window.minute=10
+ro.camera.enableCamera1MaxZsl=1
